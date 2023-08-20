@@ -18,20 +18,50 @@ function playRound(player, computer){
     player = player[0].toUpperCase() + player.substring(1);
 
     if (player === computer){
-        return 'Tie!';
+        console.log(`Tie! You both chose ${computer}`);
+        return 0;
     }
     else if (player === "Rock" && computer === "Scissors"){
-        return `You Win! ${player} beats ${computer}`;
+        console.log(`You Win! ${player} beats ${computer}`);
+        return 1;
     }
     else if (player === "Scissors" && computer === "Paper"){
-        return `You Win! ${player} beats ${computer}`;
+        console.log(`You Win! ${player} beats ${computer}`);
+        return 1;
     }
     else if (player === "Paper" && computer === "Rock"){
-        return `You Win! ${player} beats ${computer}`;
+        console.log(`You Win! ${player} beats ${computer}`);
+        return 1;
     }
     else{
-        return `You Lose! ${computer} beats ${player}`;
+        console.log(`You Lose! ${computer} beats ${player}`);
+        return -1;
     }
 }
 
-console.log(playRound('rock', 'Scissors'));
+function game(){
+    let playerScore = 0;
+    let computerScore = 0;
+
+    for(let i = 0; i < 5; i++){
+        let outcome = playRound(prompt("Choose Rock, Paper, or Scissors."), getComputerChoice());
+        if (outcome === 1){
+            playerScore += outcome;
+        }
+        else if (outcome === -1){
+            computerScore -= outcome;
+        }
+    }
+
+    if (playerScore > computerScore){
+        console.log("You win the game of 5!");
+    }
+    else if (playerScore < computerScore){
+        console.log("You lost the game of 5.");
+    }
+    else {
+        console.log("You tied the game of 5.");
+    }
+}
+
+game();

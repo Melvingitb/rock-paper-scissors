@@ -12,4 +12,26 @@ function getComputerChoice(){
     }
 }
 
-console.log(getComputerChoice());
+function playRound(player, computer){
+    //Change capitalization
+    player = player.toLowerCase();
+    player = player[0].toUpperCase() + player.substring(1);
+
+    if (player === computer){
+        return 'Tie!';
+    }
+    else if (player === "Rock" && computer === "Scissors"){
+        return `You Win! ${player} beats ${computer}`;
+    }
+    else if (player === "Scissors" && computer === "Paper"){
+        return `You Win! ${player} beats ${computer}`;
+    }
+    else if (player === "Paper" && computer === "Rock"){
+        return `You Win! ${player} beats ${computer}`;
+    }
+    else{
+        return `You Lose! ${computer} beats ${player}`;
+    }
+}
+
+console.log(playRound('rock', 'Scissors'));

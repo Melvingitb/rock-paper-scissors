@@ -12,11 +12,21 @@ function getComputerChoice(){
     }
 }
 
-function playRound(player, computer){
-    //Change capitalization
-    player = player.toLowerCase();
-    player = player[0].toUpperCase() + player.substring(1);
+function playRound(computer){
+    let player = "";
+    while (player != "Rock" && player != "Paper" && player != "Scissors"){
+        player = prompt("Choose Rock, Paper, or Scissors.");
+        //Change capitalization
+        player = player.toLowerCase();
+        player = player[0].toUpperCase() + player.substring(1);
 
+        if (player != "Rock" && player != "Paper" && player != "Scissors"){
+            alert("Please choose a valid answer.");
+        }
+
+    }
+
+    //determine outcome
     if (player === computer){
         console.log(`Tie! You both chose ${computer}`);
         return 0;
@@ -44,7 +54,7 @@ function game(){
     let computerScore = 0;
 
     for(let i = 0; i < 5; i++){
-        let outcome = playRound(prompt("Choose Rock, Paper, or Scissors."), getComputerChoice());
+        let outcome = playRound(getComputerChoice());
         if (outcome === 1){
             playerScore += outcome;
         }
